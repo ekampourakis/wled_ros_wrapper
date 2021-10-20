@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(wled_ros_wrapper)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_BUILD_TYPE Debug)
 # set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -std=c++14 -march=native -Wextra -Wno-unknown-pragmas -g3 -O0 -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -std=c++14 -march=native -Wextra -Wno-unknown-pragmas -g0 -Ofast")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -std=c++17 -march=native -Wextra -Wno-unknown-pragmas -g3 -O0 -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -std=c++17 -march=native -Wextra -Wno-unknown-pragmas -g0 -Ofast")
 IF(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Debug)
 ENDIF(NOT CMAKE_BUILD_TYPE)
@@ -32,7 +32,7 @@ catkin_package(CATKIN_DEPENDS
 	std_msgs
 )
 
-include_directories(${catkin_INCLUDE_DIRS} include)
+include_directories(${catkin_INCLUDE_DIRS} include HTTPRequest/include)
 set(SOURCES src/wrapper.cpp)
 add_executable(wrapper ${SOURCES})
 target_compile_options(wrapper PRIVATE)
