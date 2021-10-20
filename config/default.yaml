@@ -1,2 +1,3 @@
-package_template:
-  Value: 0
+wled_ros_wrapper:
+  address: wled.local # 192.168.1.1
+  default: 0

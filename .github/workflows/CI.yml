@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: package_template
+          path: wled_ros_wrapper
 
       - name: Install ROS
         run: |
@@ -32,13 +32,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          rosdep install --from-paths package_template --ignore-src -r -y --rosdistro=melodic
+          rosdep install --from-paths wled_ros_wrapper --ignore-src -r -y --rosdistro=melodic
 
       - name: Build
         run: |
           source /opt/ros/melodic/setup.bash
           mkdir -p ~/catkin_ws/src
-          mv package_template ~/catkin_ws/src
+          mv wled_ros_wrapper ~/catkin_ws/src
           cd ~/catkin_ws
           catkin build
           source devel/setup.bash

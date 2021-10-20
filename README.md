@@ -1,37 +1,25 @@
-# ros_package_template
+# WLED ROS Wrapper
 
-![CI](https://github.com/LMS-Robotics-VR/package_template/workflows/CI/badge.svg)
+![CI](https://github.com/ekampourakis/wled_ros_wrapper/workflows/CI/badge.svg)
 
 ## Overview
 
-This is a template repository for a ROS package to use when creating new ROS packages for LMS.
-It containts all basic functionality and sets the structure for the package. 
-Two template nodes are also provided for both Python and C++ with example code for message/topic exchanging.
+This is a simple C++ ROS wrapper for the WLED lighting controller.
+It uses the HTTP API of the WLED controller to control the lighting.
+Turning on and off the lights, changing the brightness, and changing the color of the lights are all possible.
+Basic effect setting is also available.
 Feel free to modify it to your needs.
 
-**Keywords:** ros, package, template, lms
+**Keywords:** `wled`, `ros`, `wrapper`, `http`, `api`
 
 ![Thumbnail](.github/thumbnail.jpg)
 
 ## License 
 
-The source code of this package is not released under any license.
+The source code of this package is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) license.
 
-**Author:** Surname Lastname
-**Maintainer:** Surname Lastname
-
-## Publications
-If you use this work in an academic context, please cite the following publication(s):
-- Names: **Title** ([PDF](link))
-```
-@inproceedings{Name,
-    author = {},
-    booktitle = {},
-    title = {},
-    publisher = {},
-    year = {}
-}
-```
+**Author:** Manos Kampourakis
+**Maintainer:** Manos Kampourakis
 
 ## Compatibility
 
@@ -50,19 +38,18 @@ You can also install all the ROS package dependencies using `rosdep` inside your
 
 Check the GitHub actions for automated installation scripts.
 
-
 ## Compiling
 
-* Clone this repository inside your source folder of your catkin workspace: `git clone https://github.com/LMS-Robotics-VR/package_template`
-* Alternatively you can add this repository as a Git submodule in your existing project: `git submodule add https://github.com/LMS-Robotics-VR/package_template`
-* Build the package: `catkin build package_template`
+* Clone this repository inside your source folder of your catkin workspace: `git clone https://github.com/ekampourakis/wled_ros_wrapper`
+* Alternatively you can add this repository as a Git submodule in your existing project: `git submodule add https://github.com/ekampourakis/wled_ros_wrapper`
+* Build the package: `catkin build wled_ros_wrapper`
 
 ## Running
 
-After sourcing your catkin workspace, you can run: `roslaunch package_template default.launch` to start the node.
+After sourcing your catkin workspace, you can run: `roslaunch wled_ros_wrapper default.launch` to start the node.
 You can also use the launch file parameters:
 
-* `config`: Default `$(find package_template)/config/default.yaml`. Loads the provided configuration file to the ROS parameter server.
+* `config`: Default `$(find wled_ros_wrapper)/config/default.yaml`. Loads the provided configuration file to the ROS parameter server.
 
 ## Configuring
 
@@ -74,20 +61,15 @@ This package uses the standard ROS interfaces.
 
 ### Subscribers
 
-* `/python_subscriber`: `package_template::TemplateMessage`. The subscriber of the Python node.
-* `/cpp_subscriber`: `package_template::TemplateMessage`. The subscriber of the C++ node.
+* `set`: `wled_ros_wrapper::WLED`. The subscriber of wrapper. Used to set the LED strips.
 
 ### Publishers
 
-* `/cpp_subscriber`: `package_template::TemplateMessage`. The publisher of the Python node.
-* `/python_subscriber`: `package_template::TemplateMessage`. The publisher of the C++ node.
+None
 
 ### Services
 
-* `/zed_human_tracking/set_state`  `std_srvs::SetBool`. Service for enabling and disabling the node.
-
-* `/python_service`: `package_template::TemplateService`. The service server of the Python node.
-* `/cpp_service`: `package_template::TemplateService`. The service server of the C++ node.
+None
 
 ## Troubleshooting
 

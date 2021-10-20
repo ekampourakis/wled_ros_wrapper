@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(package_template)
+project(wled_ros_wrapper)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,33 +15,27 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 find_package(catkin REQUIRED COMPONENTS
-	rospy
 	roscpp
 	message_generation
 	message_runtime
 	std_msgs
-	std_srvs
 )
 
 add_message_files(DIRECTORY msg)
-add_service_files(DIRECTORY srv)
+# add_service_files(DIRECTORY srv)
 generate_messages(DEPENDENCIES std_msgs)
 
 catkin_package(CATKIN_DEPENDS
-	rospy
 	roscpp
 	message_generation
 	message_runtime
 	std_msgs
-	std_srvs
 )
 
 include_directories(${catkin_INCLUDE_DIRS} include)
-set(SOURCES src/template.cpp)
-add_executable(template_cpp ${SOURCES})
-target_compile_options(template_cpp PRIVATE)
-target_link_libraries(template_cpp ${catkin_LIBRARIES})
-add_dependencies(template_cpp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+set(SOURCES src/wrapper.cpp)
+add_executable(wrapper ${SOURCES})
+target_compile_options(wrapper PRIVATE)
+target_link_libraries(wrapper ${catkin_LIBRARIES})
+add_dependencies(wrapper ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 install(DIRECTORY include/${PROJECT_NAME}/ DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
-
-catkin_install_python(PROGRAMS scripts/template.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

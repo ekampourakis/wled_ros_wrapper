@@ -1,26 +1,24 @@
 <?xml version="1.0"?>
 <package format="2">
-	<name>package_template</name>
+	<name>wled_ros_wrapper</name>
 	<version>1.0.0</version>
-	<description>Template repository for a ROS package</description>
+	<description>ROS Wrapper for controlling WLED strips using the HTTP API</description>
 
-	<author email="surname@lms.mech.upatras.gr">Name Surname</author>
+	<author email="ekampourakis@ceid.upatras.gr">Manos Kampourakis</author>
 
-	<maintainer email="surname@lms.mech.upatras.gr">Name Surname</maintainer>
+	<maintainer email="ekampourakis@ceid.upatras.gr">Manos Kampourakis</maintainer>
 
 	<license>Unlicensed</license>
-	<url type="website">https://github.com/LMS-Robotics-VR/package-template/</url>
+	<url type="website">https://github.com/ekampourakis/wled_ros_wrapper/</url>
 
 	<buildtool_depend>catkin</buildtool_depend>
 
-	<depend>rospy</depend>
     <depend>roscpp</depend>
 
     <depend>message_generation</depend>
     <depend>message_runtime</depend>
 
     <depend>std_msgs</depend>
-    <depend>std_srvs</depend>
 
 	<export></export>
 
