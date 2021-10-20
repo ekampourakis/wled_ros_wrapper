@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+	<name>package_template</name>
+	<version>1.0.0</version>
+	<description>Template repository for a ROS package</description>
+
+	<author email="surname@lms.mech.upatras.gr">Name Surname</author>
+
+	<maintainer email="surname@lms.mech.upatras.gr">Name Surname</maintainer>
+
+	<license>Unlicensed</license>
+	<url type="website">https://github.com/LMS-Robotics-VR/package-template/</url>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<depend>rospy</depend>
+    <depend>roscpp</depend>
+
+    <depend>message_generation</depend>
+    <depend>message_runtime</depend>
+
+    <depend>std_msgs</depend>
+    <depend>std_srvs</depend>
+
+	<export></export>
+
+</package>

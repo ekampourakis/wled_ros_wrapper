@@ -1,0 +1,10 @@
+<launch>
+
+    <arg name="config" default="$(find package_template)/config/default.yaml"/>
+
+    <rosparam command="load" file="$(arg config)"/>
+
+    <node name="cpp" pkg="package_template" type="template.py" output="screen"/>
+    <node name="py" pkg="package_template" type="template_cpp" output="screen"/>
+    
+</launch>

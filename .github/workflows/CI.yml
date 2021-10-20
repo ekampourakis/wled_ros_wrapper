@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build on Ubuntu 18.04 with ROS Melodic
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: package_template
+
+      - name: Install ROS
+        run: |
+            sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+            sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+            sudo apt-get update -qq
+            sudo apt-get install dpkg
+            sudo apt-get install ros-melodic-ros-base
+            source /opt/ros/melodic/setup.bash
+            sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+            sudo apt install python-rosdep ros-melodic-catkin python-catkin-tools
+            sudo rosdep init
+            rosdep update
+
+      - name: Install dependencies
+        run: |
+          rosdep install --from-paths package_template --ignore-src -r -y --rosdistro=melodic
+
+      - name: Build
+        run: |
+          source /opt/ros/melodic/setup.bash
+          mkdir -p ~/catkin_ws/src
+          mv package_template ~/catkin_ws/src
+          cd ~/catkin_ws
+          catkin build
+          source devel/setup.bash
