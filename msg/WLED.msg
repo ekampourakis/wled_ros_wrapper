@@ -3,6 +3,9 @@ std_msgs/Header header
 bool state
 
 uint8 brightness
-std_msgs/ColorRGBA color
+uint8 r
+uint8 g
+uint8 b
+uint8 a
 
 WLEDEffect effect
